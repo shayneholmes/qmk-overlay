@@ -1,0 +1,17 @@
+#ifndef CONFIG_USER_H
+#define CONFIG_USER_H
+
+#undef  TAPPING_TOGGLE
+#define TAPPING_TOGGLE  3
+#undef  TAPPING_TERM
+#define TAPPING_TERM    230
+#undef  DEBOUNCE
+#define DEBOUNCE 50
+
+#undef  QMK_KEYS_PER_SCAN
+#define QMK_KEYS_PER_SCAN 4
+
+#define LEADER_TIMEOUT 300
+#define FORCE_NKRO
+
+#endif
