@@ -262,7 +262,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,_______,
                                 KC_RGUI,KC_RALT,_______,_______,_______,
         _______,_______,
-        _______, _______,KC_RSFT,KC_RCTL
+        _______,
+        _______,KC_RSFT,KC_RCTL
     ),
 
     [LAYER_BLUESHIFT] = LAYOUT_ergodox(  // "BlueShift"
