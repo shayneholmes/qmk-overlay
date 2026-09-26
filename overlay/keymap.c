@@ -69,8 +69,8 @@ enum layer_id {
 
 // Tri-layer is handled for these in post_process_record_user, so use LT macros
 // to make these codes different from the single TT ones.
-#define TWOLAYER_NUM_FN LT(LAYER_NUMPAD,    KC_NO)
-#define TWOLAYER_BLU_FN LT(LAYER_BLUESHIFT, KC_NO)
+#define TWOLAYER_NUM_FN TT(LAYER_NUMPAD)
+#define TWOLAYER_BLU_FN TT(LAYER_BLUESHIFT)
 
 #define NUM_FN TWOLAYER_NUM_FN
 #define BLU_FN TWOLAYER_BLU_FN
