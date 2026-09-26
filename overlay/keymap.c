@@ -23,19 +23,6 @@ enum custom_keycodes {
   MACRO_P,
   MACRO_MAX,
 
-  TOGGLE_SHIFT_MIN,
-  TOGGLE_SHIFT_KC_1,
-  TOGGLE_SHIFT_KC_2,
-  TOGGLE_SHIFT_KC_3,
-  TOGGLE_SHIFT_KC_4,
-  TOGGLE_SHIFT_KC_5,
-  TOGGLE_SHIFT_KC_6,
-  TOGGLE_SHIFT_KC_7,
-  TOGGLE_SHIFT_KC_8,
-  TOGGLE_SHIFT_KC_9,
-  TOGGLE_SHIFT_KC_0,
-  TOGGLE_SHIFT_MAX,
-
   NEW_SAFE_RANGE, // set new safe range
 };
 
@@ -55,17 +42,6 @@ enum layer_id {
     LAYER_BLUESHIFT = 7,
     LAYER_FKEYS = 8,
 };
-
-#define TSFT_1  TOGGLE_SHIFT_KC_1
-#define TSFT_2  TOGGLE_SHIFT_KC_2
-#define TSFT_3  TOGGLE_SHIFT_KC_3
-#define TSFT_4  TOGGLE_SHIFT_KC_4
-#define TSFT_5  TOGGLE_SHIFT_KC_5
-#define TSFT_6  TOGGLE_SHIFT_KC_6
-#define TSFT_7  TOGGLE_SHIFT_KC_7
-#define TSFT_8  TOGGLE_SHIFT_KC_8
-#define TSFT_9  TOGGLE_SHIFT_KC_9
-#define TSFT_0  TOGGLE_SHIFT_KC_0
 
 // Tri-layer is handled for these in post_process_record_user, so use LT macros
 // to make these codes different from the single TT ones.
@@ -114,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_BASE] = LAYOUT_ergodox(  // software Dvorak, with symbol row reversed
         // left hand
-        KC_ESC, TSFT_1,     TSFT_2,     TSFT_3,     TSFT_4,     TSFT_5, KC_F17,
+        KC_ESC, KC_EXLM,    KC_AT,      KC_HASH,    KC_DOLLAR,  KC_PERC,KC_F17,
         KC_TAB, DV_QUOT,    DV_COMM,    DV_DOT,     DV_P,       DV_Y,   LT_MOVE,
         KC_LSFT,SFT_T(DV_A),CTL_T(DV_O),ALT_T(DV_E),GUI_T(DV_U),DV_I,
         KC_LCTL,DV_SCLN,    DV_Q,       DV_J,       LT_NM(DV_K),DV_X,   KC_DEL,
@@ -123,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         KC_F16,
                                         KC_BSPC,KC_LSFT,NUM_FN,
         // right hand
-                KC_F18, TSFT_6, TSFT_7,     TSFT_8,     TSFT_9,     TSFT_0,     KC_MPLY,
+                KC_F18, KC_CIRC,KC_AMPR,    KC_ASTR,    KC_LPRN,    KC_RPRN,    KC_MPLY,
                 TT_NUM, DV_F,   DV_G,       DV_C,       DV_R,       DV_L,       FWDBACK,
                         DV_D,   GUI_T(DV_H),ALT_T(DV_T),CTL_T(DV_N),SFT_T(DV_S),KC_RSFT,
                 KC_DEL, DV_B,   DV_M,       DV_W,       DV_V,       DV_Z,       KC_RCTL,
@@ -341,49 +317,33 @@ const key_override_t grave_esc_override = ko_make_basic(MOD_MASK_GUI, KC_ESC, G(
 // When GUI is on, apostrophe yields ` (MacOS window switching)
 const key_override_t grave_apostrophe_override = ko_make_basic(MOD_MASK_GUI, DV_QUOT, G(KC_GRV));
 
+// Shift toggle
+const key_override_t override_1 = ko_make_basic(MOD_MASK_SHIFT, KC_EXCLAIM, KC_1); // Shift ! is 1
+const key_override_t override_2 = ko_make_basic(MOD_MASK_SHIFT, KC_AT, KC_2); // Shift @ is 2
+const key_override_t override_3 = ko_make_basic(MOD_MASK_SHIFT, KC_HASH, KC_3); // Shift # is 3
+const key_override_t override_4 = ko_make_basic(MOD_MASK_SHIFT, KC_DOLLAR, KC_4); // Shift $ is 4
+const key_override_t override_5 = ko_make_basic(MOD_MASK_SHIFT, KC_PERCENT, KC_5); // Shift % is 5
+const key_override_t override_6 = ko_make_basic(MOD_MASK_SHIFT, KC_CIRCUMFLEX, KC_6); // Shift ^ is 6
+const key_override_t override_7 = ko_make_basic(MOD_MASK_SHIFT, KC_AMPERSAND, KC_7); // Shift & is 7
+const key_override_t override_8 = ko_make_basic(MOD_MASK_SHIFT, KC_ASTERISK, KC_8); // Shift * is 8
+const key_override_t override_9 = ko_make_basic(MOD_MASK_SHIFT, KC_LEFT_PAREN, KC_9); // Shift ( is 9
+const key_override_t override_0 = ko_make_basic(MOD_MASK_SHIFT, KC_RIGHT_PAREN, KC_9); // Shift ) is 0
+
+
 const key_override_t *key_overrides[] = {
     &grave_esc_override,
     &grave_apostrophe_override,
+    &override_1,
+    &override_2,
+    &override_3,
+    &override_4,
+    &override_5,
+    &override_6,
+    &override_7,
+    &override_8,
+    &override_9,
+    &override_0,
 };
-
-// Mapping function to link up custom shift keycodes with the relevant key to shift.
-uint8_t shift_custom_keycode_to_keycode(uint16_t param) {
-    switch (param) {
-        case TOGGLE_SHIFT_KC_1: return KC_1;
-        case TOGGLE_SHIFT_KC_2: return KC_2;
-        case TOGGLE_SHIFT_KC_3: return KC_3;
-        case TOGGLE_SHIFT_KC_4: return KC_4;
-        case TOGGLE_SHIFT_KC_5: return KC_5;
-        case TOGGLE_SHIFT_KC_6: return KC_6;
-        case TOGGLE_SHIFT_KC_7: return KC_7;
-        case TOGGLE_SHIFT_KC_8: return KC_8;
-        case TOGGLE_SHIFT_KC_9: return KC_9;
-        case TOGGLE_SHIFT_KC_0: return KC_0;
-        default: return KC_NO;
-    };
-};
-
-void function_toggle_shift(keyrecord_t *record, uint16_t custom_keycode)
-{
-    if (!record->event.pressed) return; // tap these keys only when they're pressed
-    const uint8_t keycode = shift_custom_keycode_to_keycode(custom_keycode);
-    if (keycode == KC_NO) return;
-    uint8_t savedmods = get_mods();
-    action_t action = {.code = ACTION_MODS_KEY(savedmods ? 0 : MOD_LSFT, keycode)};
-    bool shift_pressed = savedmods & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT));
-    if (shift_pressed) {
-        del_mods(MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT));
-        send_keyboard_report();
-    }
-    process_action(record, action);
-    record->event.pressed = false;
-    process_action(record, action);
-    record->event.pressed = true;
-    if (shift_pressed) {
-        set_mods(savedmods);
-        send_keyboard_report();
-    }
-}
 
 void function_send_macro(keyrecord_t *record, uint16_t keycode)
 {
@@ -422,9 +382,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         case PLOVER:
             function_plover_key(record);
-            return false;
-        case TOGGLE_SHIFT_MIN ... TOGGLE_SHIFT_MAX:
-            function_toggle_shift(record, keycode);
             return false;
         case MACRO_MIN ... MACRO_MAX:
             function_send_macro(record, keycode);
