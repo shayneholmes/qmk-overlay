@@ -242,7 +242,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 KC_P0,  DV_COMM,KC_PDOT,KC_PENT,KC_PENT,
         _______,_______,
         _______,
-        KC_ENT, _______,_______
+        KC_ENT, _______,QK_LLCK
     ),
 
     [LAYER_MOVEMENT] = LAYOUT_ergodox(  // F-keys + cursor
