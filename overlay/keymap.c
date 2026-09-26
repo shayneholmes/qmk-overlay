@@ -79,6 +79,7 @@ enum layer_id {
 #define TT_BLUE TT(LAYER_BLUESHIFT)
 #define TT_NUM TT(LAYER_NUMPAD)
 #define LT_MOVE LT(LAYER_MOVEMENT, KC_F21)
+#define LT_NM(K) LT(LAYER_NUMPAD, K)
 #define ALTTAB LGUI(KC_TAB)
 
 #define LCURLY LSFT(DV_LBRC)
@@ -116,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC, TSFT_1,     TSFT_2,     TSFT_3,     TSFT_4,     TSFT_5, KC_F17,
         KC_TAB, DV_QUOT,    DV_COMM,    DV_DOT,     DV_P,       DV_Y,   LT_MOVE,
         KC_LSFT,SFT_T(DV_A),CTL_T(DV_O),ALT_T(DV_E),GUI_T(DV_U),DV_I,
-        KC_LCTL,DV_SCLN,    DV_Q,       DV_J,       DV_K,       DV_X,   KC_DEL,
+        KC_LCTL,DV_SCLN,    DV_Q,       DV_J,       LT_NM(DV_K),DV_X,   KC_DEL,
         NUM_FN, BLU_FN,     KC_LCTL,    KC_LALT,    KC_LGUI,
                                                 PLOVER, QK_LEAD,
                                                         KC_F16,
