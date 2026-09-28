@@ -23,3 +23,4 @@ UNICODE_ENABLE := no
 
 DEBOUNCE_TYPE := sym_eager_pk
 LAYER_LOCK_ENABLE := yes
+REPEAT_KEY_ENABLE = yes

@@ -54,6 +54,7 @@ enum layer_id {
 #define TO_BASE TO(LAYER_BASE)
 #define TT_BLUE TT(LAYER_BLUESHIFT)
 #define TT_NUM TT(LAYER_NUMPAD)
+#define MV_RPT LT(LAYER_BLUESHIFT, KC_NO)
 #define LT_MOVE LT(LAYER_MOVEMENT, KC_F21)
 #define LT_NM(K) LT(LAYER_NUMPAD, K)
 #define ALTTAB LGUI(KC_TAB)
@@ -106,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 KC_RGUI,    KC_RALT,    KC_RCTL,    ALTTAB,     LT_MOVE,
         SCRNSVR,KC_MPLY,
         KC_F14,
-        KC_ENT, TT_BLUE,KC_SPC
+        KC_ENT, MV_RPT, KC_SPC
     ),
 
     [LAYER_TRANSPARENT] = LAYOUT_ergodox(  // I trigger this more often than I'd like
@@ -148,7 +149,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 KC_LEFT,KC_DOWN,KC_UP,  KC_RGHT,LT_MOVE,
         KC_PGUP,KC_MPLY,
         KC_PGDN,
-        KC_ENT, TT_BLUE,KC_SPC
+        KC_ENT, MV_RPT, KC_SPC
     ),
 
     [LAYER_QWERTY] = LAYOUT_ergodox(
@@ -362,6 +363,13 @@ void function_send_macro(keyrecord_t *record, uint16_t keycode)
 }
 
 /* override hook */
+bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
+                            uint8_t* remembered_mods) {
+  if (keycode == MV_RPT) { return false; }
+  return true;
+}
+
+/* override hook */
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch(keycode) {
         case FWDBACK:
@@ -386,6 +394,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case MACRO_MIN ... MACRO_MAX:
             function_send_macro(record, keycode);
             return false;
+        case MV_RPT:  // NAV layer on hold, Repeat Key on tap.
+            if (record->tap.count) {  // On tap.
+                repeat_key_invoke(&record->event);  // Repeat the last key.
+                return false;  // Skip default handling.
+            }
+            return true;
         default:
             return true;
     }
