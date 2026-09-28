@@ -246,7 +246,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         TO_BASE,KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F6,
         _______,KC_TILD,LCURLY, RCURLY, KC_PSCR,KC_BSLS,_______,
-        _______,KC_APP, KC_TAB, DV_EQL, DV_MINS,KC_INS,
+        _______,SFT_T(KC_APP), CTL_T(KC_TAB), ALT_T(DV_EQL), GUI_T(DV_MINS),KC_INS,
         _______,_______,DV_GRV, DV_LBRC,DV_RBRC,KC_CAPS,_______,
         _______,_______,_______,_______,_______,
                                                 _______,_______,
