@@ -55,11 +55,22 @@ enum layer_id {
 #define TT_BLUE TT(LAYER_BLUESHIFT)
 #define TT_NUM TT(LAYER_NUMPAD)
 #define LT_MOVE LT(LAYER_MOVEMENT, KC_F21)
-#define LT_NM(K) LT(LAYER_NUMPAD, K)
+#define NUM__K LT(LAYER_NUMPAD, DV_K)
 #define ALTTAB LGUI(KC_TAB)
 
 #define LCURLY LSFT(DV_LBRC)
 #define RCURLY LSFT(DV_RBRC)
+
+// Homerow mods
+#define SFT__A SFT_T(DV_A)
+#define CTL__O CTL_T(DV_O)
+#define ALT__E ALT_T(DV_E)
+#define GUI__U GUI_T(DV_U)
+
+#define SFT__S SFT_T(DV_S)
+#define CTL__N CTL_T(DV_N)
+#define ALT__T ALT_T(DV_T)
+#define GUI__H GUI_T(DV_H)
 
 #define SCRNSVR LCTL(LGUI(DV_O))
 
@@ -90,20 +101,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_BASE] = LAYOUT_ergodox(  // software Dvorak, with symbol row reversed
         // left hand
-        KC_ESC, KC_1,       KC_2,       KC_3,       KC_4,       KC_5,   KC_F17,
-        KC_TAB, DV_QUOT,    DV_COMM,    DV_DOT,     DV_P,       DV_Y,   LT_MOVE,
-        KC_LSFT,SFT_T(DV_A),CTL_T(DV_O),ALT_T(DV_E),GUI_T(DV_U),DV_I,
-        KC_LCTL,DV_SCLN,    DV_Q,       DV_J,       LT_NM(DV_K),DV_X,   KC_DEL,
-        NUM_FN, BLU_FN,     KC_LCTL,    KC_LALT,    KC_LGUI,
+        KC_ESC, KC_1,   KC_2,   KC_3,   KC_4,   KC_5,   KC_F17,
+        KC_TAB, DV_QUOT,DV_COMM,DV_DOT, DV_P,   DV_Y,   LT_MOVE,
+        KC_LSFT,SFT__A, CTL__O, ALT__E, GUI__U, DV_I,
+        KC_LCTL,DV_SCLN,DV_Q,   DV_J,   NUM__K, DV_X,   KC_DEL,
+        NUM_FN, BLU_FN, KC_LCTL,KC_LALT,KC_LGUI,
                                                 PLOVER, QK_LEAD,
                                                         KC_F16,
                                         KC_BSPC,KC_LSFT,NUM_FN,
         // right hand
-                KC_F18, KC_6,   KC_7,       KC_8,       KC_9,       KC_0,       KC_MPLY,
-                TT_NUM, DV_F,   DV_G,       DV_C,       DV_R,       DV_L,       FWDBACK,
-                        DV_D,   GUI_T(DV_H),ALT_T(DV_T),CTL_T(DV_N),SFT_T(DV_S),KC_RSFT,
-                KC_DEL, DV_B,   DV_M,       DV_W,       DV_V,       DV_Z,       KC_RCTL,
-                                KC_RGUI,    KC_RALT,    KC_RCTL,    ALTTAB,     LT_MOVE,
+                KC_F18, KC_6,   KC_7,   KC_8,   KC_9,   KC_0,  KC_MPLY,
+                TT_NUM, DV_F,   DV_G,   DV_C,   DV_R,   DV_L,  FWDBACK,
+                        DV_D,   GUI__H, ALT__T, CTL__N, SFT__S,KC_RSFT,
+                KC_DEL, DV_B,   DV_M,   DV_W,   DV_V,   DV_Z,  KC_RCTL,
+                                KC_RGUI,KC_RALT,KC_RCTL,ALTTAB,LT_MOVE,
         SCRNSVR,KC_MPLY,
         KC_F14,
         KC_ENT, TT_BLUE,KC_SPC
