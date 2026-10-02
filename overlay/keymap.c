@@ -52,7 +52,7 @@ enum layer_id {
 #define BLU_FN TWOLAYER_BLU_FN
 
 #define TO_BASE TO(LAYER_BASE)
-#define OS_BLUE OSL(LAYER_BLUESHIFT)
+#define TT_BLUE TT(LAYER_BLUESHIFT)
 #define TT_NUM TT(LAYER_NUMPAD)
 #define LT_MOVE LT(LAYER_MOVEMENT, KC_F21)
 #define LT_NM(K) LT(LAYER_NUMPAD, K)
@@ -106,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 KC_RGUI,    KC_RALT,    KC_RCTL,    ALTTAB,     LT_MOVE,
         SCRNSVR,KC_MPLY,
         KC_F14,
-        KC_ENT, OS_BLUE,KC_SPC
+        KC_ENT, TT_BLUE,KC_SPC
     ),
 
     [LAYER_TRANSPARENT] = LAYOUT_ergodox(  // I trigger this more often than I'd like
@@ -148,7 +148,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 KC_LEFT,KC_DOWN,KC_UP,  KC_RGHT,LT_MOVE,
         KC_PGUP,KC_MPLY,
         KC_PGDN,
-        KC_ENT, OS_BLUE,KC_SPC
+        KC_ENT, TT_BLUE,KC_SPC
     ),
 
     [LAYER_QWERTY] = LAYOUT_ergodox(
