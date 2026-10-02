@@ -90,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_BASE] = LAYOUT_ergodox(  // software Dvorak, with symbol row reversed
         // left hand
-        KC_ESC, KC_EXLM,    KC_AT,      KC_HASH,    KC_DOLLAR,  KC_PERC,KC_F17,
+        KC_ESC, KC_1,       KC_2,       KC_3,       KC_4,       KC_5,   KC_F17,
         KC_TAB, DV_QUOT,    DV_COMM,    DV_DOT,     DV_P,       DV_Y,   LT_MOVE,
         KC_LSFT,SFT_T(DV_A),CTL_T(DV_O),ALT_T(DV_E),GUI_T(DV_U),DV_I,
         KC_LCTL,DV_SCLN,    DV_Q,       DV_J,       LT_NM(DV_K),DV_X,   KC_DEL,
@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         KC_F16,
                                         KC_BSPC,KC_LSFT,NUM_FN,
         // right hand
-                KC_F18, KC_CIRC,KC_AMPR,    KC_ASTR,    KC_LPRN,    KC_RPRN,    KC_MPLY,
+                KC_F18, KC_6,   KC_7,       KC_8,       KC_9,       KC_0,       KC_MPLY,
                 TT_NUM, DV_F,   DV_G,       DV_C,       DV_R,       DV_L,       FWDBACK,
                         DV_D,   GUI_T(DV_H),ALT_T(DV_T),CTL_T(DV_N),SFT_T(DV_S),KC_RSFT,
                 KC_DEL, DV_B,   DV_M,       DV_W,       DV_V,       DV_Z,       KC_RCTL,
@@ -322,17 +322,29 @@ const key_override_t fwdback_prev_override = ko_make_basic(MOD_MASK_SHIFT, FWDBA
 const key_override_t fwdback_next_override = ko_make_basic(0, FWDBACK, KC_MNXT);
 
 // Shift toggle
-const key_override_t override_1 = ko_make_basic(MOD_MASK_SHIFT, KC_EXCLAIM, KC_1); // Shift ! is 1
-const key_override_t override_2 = ko_make_basic(MOD_MASK_SHIFT, KC_AT, KC_2); // Shift @ is 2
-const key_override_t override_3 = ko_make_basic(MOD_MASK_SHIFT, KC_HASH, KC_3); // Shift # is 3
-const key_override_t override_4 = ko_make_basic(MOD_MASK_SHIFT, KC_DOLLAR, KC_4); // Shift $ is 4
-const key_override_t override_5 = ko_make_basic(MOD_MASK_SHIFT, KC_PERCENT, KC_5); // Shift % is 5
-const key_override_t override_6 = ko_make_basic(MOD_MASK_SHIFT, KC_CIRCUMFLEX, KC_6); // Shift ^ is 6
-const key_override_t override_7 = ko_make_basic(MOD_MASK_SHIFT, KC_AMPERSAND, KC_7); // Shift & is 7
-const key_override_t override_8 = ko_make_basic(MOD_MASK_SHIFT, KC_ASTERISK, KC_8); // Shift * is 8
-const key_override_t override_9 = ko_make_basic(MOD_MASK_SHIFT, KC_LEFT_PAREN, KC_9); // Shift ( is 9
-const key_override_t override_0 = ko_make_basic(MOD_MASK_SHIFT, KC_RIGHT_PAREN, KC_9); // Shift ) is 0
+// When a number key is pressed with no mods, turn it to a matching symbol.
+const key_override_t override_1 = ko_make_with_layers_and_negmods(0, KC_1, KC_EXLM, ~0, MOD_MASK_CSAG); // Shift ! is 1
+const key_override_t override_2 = ko_make_with_layers_and_negmods(0, KC_2, KC_AT,   ~0, MOD_MASK_CSAG); // Shift @ is 2
+const key_override_t override_3 = ko_make_with_layers_and_negmods(0, KC_3, KC_HASH, ~0, MOD_MASK_CSAG); // Shift # is 3
+const key_override_t override_4 = ko_make_with_layers_and_negmods(0, KC_4, KC_DLR, ~0, MOD_MASK_CSAG); // Shift $ is 4
+const key_override_t override_5 = ko_make_with_layers_and_negmods(0, KC_5, KC_PERC, ~0, MOD_MASK_CSAG); // Shift % is 5
+const key_override_t override_6 = ko_make_with_layers_and_negmods(0, KC_6, KC_CIRC, ~0, MOD_MASK_CSAG); // Shift ^ is 6
+const key_override_t override_7 = ko_make_with_layers_and_negmods(0, KC_7, KC_AMPR, ~0, MOD_MASK_CSAG); // Shift & is 7
+const key_override_t override_8 = ko_make_with_layers_and_negmods(0, KC_8, KC_ASTR, ~0, MOD_MASK_CSAG); // Shift * is 8
+const key_override_t override_9 = ko_make_with_layers_and_negmods(0, KC_9, KC_LPRN, ~0, MOD_MASK_CSAG); // Shift ( is 9
+const key_override_t override_0 = ko_make_with_layers_and_negmods(0, KC_0, KC_RPRN, ~0, MOD_MASK_CSAG); // Shift ) is 0
 
+// When a number is pressed with shift, send the number unmodified
+const key_override_t override_1_shift = ko_make_basic(MOD_MASK_SHIFT, KC_1, KC_1);
+const key_override_t override_2_shift = ko_make_basic(MOD_MASK_SHIFT, KC_2, KC_2);
+const key_override_t override_3_shift = ko_make_basic(MOD_MASK_SHIFT, KC_3, KC_3);
+const key_override_t override_4_shift = ko_make_basic(MOD_MASK_SHIFT, KC_4, KC_4);
+const key_override_t override_5_shift = ko_make_basic(MOD_MASK_SHIFT, KC_5, KC_5);
+const key_override_t override_6_shift = ko_make_basic(MOD_MASK_SHIFT, KC_6, KC_6);
+const key_override_t override_7_shift = ko_make_basic(MOD_MASK_SHIFT, KC_7, KC_7);
+const key_override_t override_8_shift = ko_make_basic(MOD_MASK_SHIFT, KC_8, KC_8);
+const key_override_t override_9_shift = ko_make_basic(MOD_MASK_SHIFT, KC_9, KC_9);
+const key_override_t override_0_shift = ko_make_basic(MOD_MASK_SHIFT, KC_9, KC_9);
 
 const key_override_t *key_overrides[] = {
     &grave_esc_override,
@@ -349,6 +361,16 @@ const key_override_t *key_overrides[] = {
     &override_8,
     &override_9,
     &override_0,
+    &override_1_shift,
+    &override_2_shift,
+    &override_3_shift,
+    &override_4_shift,
+    &override_5_shift,
+    &override_6_shift,
+    &override_7_shift,
+    &override_8_shift,
+    &override_9_shift,
+    &override_0_shift,
 };
 
 void function_send_macro(keyrecord_t *record, uint16_t keycode)
