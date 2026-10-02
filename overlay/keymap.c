@@ -317,6 +317,10 @@ const key_override_t grave_esc_override = ko_make_basic(MOD_MASK_GUI, KC_ESC, G(
 // When GUI is on, apostrophe yields ` (MacOS window switching)
 const key_override_t grave_apostrophe_override = ko_make_basic(MOD_MASK_GUI, DV_QUOT, G(KC_GRV));
 
+// Shift+next → previous
+const key_override_t fwdback_prev_override = ko_make_basic(MOD_MASK_SHIFT, FWDBACK, KC_MPRV);
+const key_override_t fwdback_next_override = ko_make_basic(0, FWDBACK, KC_MNXT);
+
 // Shift toggle
 const key_override_t override_1 = ko_make_basic(MOD_MASK_SHIFT, KC_EXCLAIM, KC_1); // Shift ! is 1
 const key_override_t override_2 = ko_make_basic(MOD_MASK_SHIFT, KC_AT, KC_2); // Shift @ is 2
@@ -333,6 +337,8 @@ const key_override_t override_0 = ko_make_basic(MOD_MASK_SHIFT, KC_RIGHT_PAREN, 
 const key_override_t *key_overrides[] = {
     &grave_esc_override,
     &grave_apostrophe_override,
+    &fwdback_prev_override,
+    &fwdback_next_override,
     &override_1,
     &override_2,
     &override_3,
@@ -364,22 +370,6 @@ void function_send_macro(keyrecord_t *record, uint16_t keycode)
 /* override hook */
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch(keycode) {
-        case FWDBACK:
-            // Next track, or previous track if shift is pressed.
-            if (!record->event.pressed) return false;
-            uint8_t savedmods = get_mods();
-            bool shift_pressed = savedmods & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT));
-            if (shift_pressed) {
-                del_mods(MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT));
-                send_keyboard_report();
-            }
-            uint8_t fwd_or_back = shift_pressed ? KC_MEDIA_PREV_TRACK : KC_MEDIA_NEXT_TRACK;
-            tap_code(fwd_or_back);
-            if (shift_pressed) {
-                set_mods(savedmods);
-                send_keyboard_report();
-            }
-            return false;
         case PLOVER:
             function_plover_key(record);
             return false;
