@@ -1,6 +1,6 @@
 BOOTMAGIC_ENABLE := yes      # Virtual DIP switch configuration (+790)
 TAP_DANCE_ENABLE := no       # Tap dance (+1034)
-MOUSEKEY_ENABLE  := no       # Mouse keys(+4700)
+MOUSEKEY_ENABLE  := yes      # Mouse keys(+4700)
 CONSOLE_ENABLE   := yes      # Console for debug(+400)
 UNICODE_ENABLE   := no       # Unicode
 ONEHAND_ENABLE   := no       # Allow swapping hands of keyboard (+436)

@@ -110,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         KC_F16,
                                         KC_BSPC,KC_LSFT,NUM_FN,
         // right hand
-                KC_F18, KC_6,   KC_7,   KC_8,   KC_9,   KC_0,  KC_MPLY,
+                MS_BTN1,KC_6,   KC_7,   KC_8,   KC_9,   KC_0,  KC_MPLY,
                 TT_NUM, DV_F,   DV_G,   DV_C,   DV_R,   DV_L,  FWDBACK,
                         DV_D,   GUI__H, ALT__T, CTL__N, SFT__S,KC_RSFT,
                 KC_DEL, DV_B,   DV_M,   DV_W,   DV_V,   DV_Z,  KC_RCTL,
