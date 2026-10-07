@@ -1,7 +1,7 @@
 .PHONY: flash apply update clean
 
 overlay_target := layouts/community/ergodox/shayneholmes
-qmk_path := .nobackup/qmk
+qmk_path := qmk_firmware
 
 flash: apply
 	(cd $(qmk_path) && make ergodox_ez:shayneholmes:flash)
