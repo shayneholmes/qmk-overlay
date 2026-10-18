@@ -32,15 +32,22 @@ _Static_assert(NEW_SAFE_RANGE <= (uint16_t) QK_USER_MAX,
 /* TMK limits this to 32 */
 /* Most actions limit to 16 */
 enum layer_id {
-    LAYER_BASE = 0,
-    LAYER_TRANSPARENT = 1,
-    LAYER_HARDWARE_DVORAK = 2,
-    LAYER_QWERTY = 3,
-    LAYER_PLOVER = 4,
-    LAYER_NUMPAD = 5,
-    LAYER_MOVEMENT = 6,
-    LAYER_BLUESHIFT = 7,
-    LAYER_FKEYS = 8,
+    // Base layers
+    LAYER_BASE,
+    LAYER_TRANSPARENT,
+    LAYER_HARDWARE_DVORAK,
+    LAYER_QWERTY,
+
+    // Plover (special case)
+    LAYER_PLOVER,
+
+    // Modifiers that might be sticky
+    LAYER_NUMPAD,
+    LAYER_MOVEMENT,
+    LAYER_BLUESHIFT,
+
+    // Modifiers that might be sticky
+    LAYER_FKEYS,
 };
 
 // Tri-layer is handled for these in post_process_record_user, so use LT macros
