@@ -45,6 +45,7 @@ enum layer_id {
     LAYER_NUMPAD,
     LAYER_MOVEMENT,
     LAYER_BLUESHIFT,
+    LAYER_WINDOW_MOTION,
 
     // Modifiers that might be sticky
     LAYER_FKEYS,
@@ -63,6 +64,7 @@ enum layer_id {
 #define TT_NUM TT(LAYER_NUMPAD)
 #define LT_MOVE LT(LAYER_MOVEMENT, KC_F21)
 #define NUM__K LT(LAYER_NUMPAD, DV_K)
+#define WNDW__Q LT(LAYER_WINDOW_MOTION, DV_Q)
 #define ALTTAB LGUI(KC_TAB)
 
 #define LCURLY LSFT(DV_LBRC)
@@ -78,6 +80,19 @@ enum layer_id {
 #define CTL__N CTL_T(DV_N)
 #define ALT__T ALT_T(DV_T)
 #define GUI__H GUI_T(DV_H)
+
+// Window motion (using Rectangle)
+# define W_BIG   LCTL(KC_P5)
+# define W_CENTR LCTL(KC_P0)
+# define W_DNLF  LCTL(KC_P1)
+# define W_DNRT  LCTL(KC_P3)
+# define W_DOWN  LCTL(KC_P2)
+# define W_LEFT  LCTL(KC_P4)
+# define W_NEXT  LCTL(KC_PMNS)
+# define W_RIGHT LCTL(KC_P6)
+# define W_UP    LCTL(KC_P8)
+# define W_UPLF  LCTL(KC_P7)
+# define W_UPRT  LCTL(KC_P9)
 
 #define SCRNSVR LCTL(LGUI(DV_O))
 
@@ -111,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC, KC_1,   KC_2,   KC_3,   KC_4,   KC_5,   KC_F17,
         KC_TAB, DV_QUOT,DV_COMM,DV_DOT, DV_P,   DV_Y,   LT_MOVE,
         KC_LSFT,SFT__A, CTL__O, ALT__E, GUI__U, DV_I,
-        KC_LCTL,DV_SCLN,DV_Q,   DV_J,   NUM__K, DV_X,   KC_DEL,
+        KC_LCTL,DV_SCLN,WNDW__Q,DV_J,   NUM__K, DV_X,   KC_DEL,
         NUM_FN, BLU_FN, KC_LCTL,KC_LALT,KC_LGUI,
                                                 PLOVER, QK_LEAD,
                                                         KC_F16,
@@ -279,6 +294,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,_______,
         _______,
         _______,_______,_______
+    ),
+
+    [LAYER_WINDOW_MOTION] = LAYOUT_ergodox(  // Move windows around
+        // left hand
+        TO_BASE,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,
+        XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,
+        XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,
+        XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,
+        XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,
+                                                XXXXXXX,XXXXXXX,
+                                                        XXXXXXX,
+                                        XXXXXXX,XXXXXXX,XXXXXXX,
+        // right hand
+                XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,
+                XXXXXXX,XXXXXXX,W_UPLF, W_UP,   W_UPRT, XXXXXXX,XXXXXXX,
+                        XXXXXXX,W_LEFT, W_BIG,  W_RIGHT,W_NEXT, XXXXXXX,
+                XXXXXXX,XXXXXXX,W_DNLF, W_DOWN, W_DNRT, XXXXXXX,XXXXXXX,
+                                W_CENTR,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,
+        XXXXXXX,XXXXXXX,
+        XXXXXXX,
+        XXXXXXX,XXXXXXX,XXXXXXX
     ),
 
     // MODIFIERS THAT WON'T BE STICKY
