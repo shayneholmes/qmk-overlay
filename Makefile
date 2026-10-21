@@ -1,7 +1,10 @@
-.PHONY: flash apply update clean
+.PHONY: apply clean flash update upload
 
 overlay_target := layouts/community/ergodox/shayneholmes
 qmk_path := qmk_firmware
+
+upload: flash
+	rclone copy ./qmk_firmware/.build/ergodox_ez_base_shayneholmes.hex gdrive:
 
 flash: apply
 	(cd $(qmk_path) && make ergodox_ez:shayneholmes:flash)
