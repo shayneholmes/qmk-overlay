@@ -15,14 +15,6 @@ enum custom_keycodes {
 
   PLOVER,
 
-  MACRO_MIN,
-  MACRO_Q,
-  MACRO_L,
-  MACRO_K,
-  MACRO_D,
-  MACRO_P,
-  MACRO_MAX,
-
   NEW_SAFE_RANGE, // set new safe range
 };
 
@@ -260,7 +252,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         QK_BOOT,XXXXXXX,KC_PGUP,KC_UP,  KC_PGDN,XXXXXXX,_______,
         _______,KC_HOME,KC_LEFT,KC_DOWN,KC_RGHT,KC_END,
         _______,XXXXXXX,XXXXXXX,KC_END, KC_HOME,NK_TOGG,_______,
-        _______,_______,_______,MACRO_Q,MACRO_K,
+        _______,_______,_______,_______,_______,
                                                 _______,_______,
                                                         _______,
                                         KC_LCTL,KC_LSFT,_______,
@@ -431,11 +423,6 @@ void function_send_macro(keyrecord_t *record, uint16_t keycode)
 {
     if (!record->event.pressed) return;
     switch (keycode) {
-        case MACRO_Q: MACRO_DEF_Q;
-        case MACRO_L: MACRO_DEF_L;
-        case MACRO_K: MACRO_DEF_K;
-        case MACRO_D: MACRO_DEF_D;
-        case MACRO_P: MACRO_DEF_P;
         default:
             print("Unknown macro called\n");
             print("keycode  = "); print_hex8(keycode); print("\n");
@@ -448,9 +435,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch(keycode) {
         case PLOVER:
             function_plover_key(record);
-            return false;
-        case MACRO_MIN ... MACRO_MAX:
-            function_send_macro(record, keycode);
             return false;
         default:
             return true;
