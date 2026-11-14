@@ -3,11 +3,17 @@
 overlay_target := layouts/community/ergodox/shayneholmes
 qmk_path := qmk_firmware
 
-upload: flash
+flash: upload
+	(cd $(qmk_path) && make ergodox_ez:shayneholmes:flash)
+
+upload: build
 	rclone copy ./qmk_firmware/.build/ergodox_ez_base_shayneholmes.hex gdrive:
 
-flash: apply
-	(cd $(qmk_path) && make ergodox_ez:shayneholmes:flash)
+build: apply
+	(cd $(qmk_path) && make ergodox_ez:shayneholmes:build)
+
+layout.json: apply
+	(cd $(qmk_path) && qmk c2json -kb ergodox_ez -km shayneholmes --no-cpp) >$@
 
 apply: $(qmk_path)/layouts
 	rsync --verbose --times --mkpath --delete --recursive \
