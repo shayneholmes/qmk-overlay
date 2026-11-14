@@ -71,15 +71,15 @@ enum layer_id {
 #define RCURLY LSFT(DV_RBRC)
 
 // Homerow mods
-#define SFT__A SFT_T(DV_A)
-#define CTL__O CTL_T(DV_O)
-#define ALT__E ALT_T(DV_E)
-#define GUI__U GUI_T(DV_U)
+#define SFT__A LSFT_T(DV_A)
+#define CTL__O LCTL_T(DV_O)
+#define ALT__E LALT_T(DV_E)
+#define GUI__U LGUI_T(DV_U)
 
-#define SFT__S SFT_T(DV_S)
-#define CTL__N CTL_T(DV_N)
-#define ALT__T ALT_T(DV_T)
-#define GUI__H GUI_T(DV_H)
+#define SFT__S RSFT_T(DV_S)
+#define CTL__N RCTL_T(DV_N)
+#define ALT__T RALT_T(DV_T)
+#define GUI__H RGUI_T(DV_H)
 
 // Window motion (using Rectangle)
 # define W_BIG   LCTL(KC_P5)
