@@ -117,8 +117,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         KC_ESC, KC_1,   KC_2,   KC_3,   KC_4,   KC_5,   KC_F17,
         KC_TAB, DV_QUOT,DV_COMM,DV_DOT, DV_P,   DV_Y,   LT_MOVE,
-        KC_LSFT,SFT__A, CTL__O, ALT__E, GUI__U, DV_I,
-        KC_LCTL,DV_SCLN,DV_Q,   WNDW__J,NUM__K, DV_X,   KC_DEL,
+        XXXXXXX,SFT__A, CTL__O, ALT__E, GUI__U, DV_I,
+        XXXXXXX,DV_SCLN,DV_Q,   WNDW__J,NUM__K, DV_X,   KC_DEL,
         XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,
                                                 PLOVER, QK_LEAD,
                                                         KC_F16,
@@ -126,8 +126,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // right hand
                 MS_BTN1,KC_6,   KC_7,   KC_8,   KC_9,   KC_0,   KC_MPLY,
                 TT_NUM, DV_F,   DV_G,   DV_C,   DV_R,   DV_L,   FWDBACK,
-                        DV_D,   GUI__H, ALT__T, CTL__N, SFT__S, KC_RSFT,
-                KC_DEL, DV_B,   DV_M,   DV_W,   DV_V,   DV_Z,   KC_RCTL,
+                        DV_D,   GUI__H, ALT__T, CTL__N, SFT__S, XXXXXXX,
+                KC_DEL, DV_B,   DV_M,   DV_W,   DV_V,   DV_Z,   XXXXXXX,
                                 XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,
         SCRNSVR,KC_MPLY,
         KC_F14,
