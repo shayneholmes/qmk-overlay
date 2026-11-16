@@ -498,6 +498,8 @@ void leader_end_user(void) {
         MACRO_DEF_K;
     } else if (leader_sequence_one_key(DV_P)) {
         MACRO_DEF_P;
+    } else if (leader_sequence_one_key(DV_R)) {
+        reset_keyboard();
     }
 }
 
