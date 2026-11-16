@@ -337,21 +337,41 @@ void function_plover_key(keyrecord_t *record)
 {
     if (record->event.pressed) return;
     layer_invert(LAYER_PLOVER);
-    bool turning_on = IS_LAYER_ON(LAYER_PLOVER);
+    bool turning_on = layer_state_is(LAYER_PLOVER);
     if (turning_on) {
         // PHRO*PB
-        register_code(PV_LP); register_code(PV_LH); register_code(PV_LR);
-        register_code(PV_O); register_code(PV_RP); register_code(PV_RB);
-        register_code(PV_STAR);
-        unregister_code(PV_LP); unregister_code(PV_LH); unregister_code(PV_LR);
-        unregister_code(PV_O); unregister_code(PV_RP); unregister_code(PV_RB);
-        unregister_code(PV_STAR);
+        SEND_STRING(
+            SS_DOWN(X_E) // PV_LP
+            SS_DOWN(X_R) // PV_LH
+            SS_DOWN(X_F) // PV_LR
+            SS_DOWN(X_V) // PV_O
+            SS_DOWN(X_I) // PV_RP
+            SS_DOWN(X_K) // PV_RB
+            SS_DOWN(X_Y) // PV_STAR
+            SS_UP(X_E) // PV_LP
+            SS_UP(X_R) // PV_LH
+            SS_UP(X_F) // PV_LR
+            SS_UP(X_V) // PV_O
+            SS_UP(X_I) // PV_RP
+            SS_UP(X_K) // PV_RB
+            SS_UP(X_Y) // PV_STAR
+        );
     } else {
         // PHRO*F
-        register_code(PV_LP); register_code(PV_LH); register_code(PV_LR);
-        register_code(PV_O); register_code(PV_STAR); register_code(PV_RF);
-        unregister_code(PV_LP); unregister_code(PV_LH); unregister_code(PV_LR);
-        unregister_code(PV_O); unregister_code(PV_STAR); unregister_code(PV_RF);
+        SEND_STRING(
+            SS_DOWN(X_E) // PV_LP
+            SS_DOWN(X_R) // PV_LH
+            SS_DOWN(X_F) // PV_LR
+            SS_DOWN(X_V) // PV_O
+            SS_DOWN(X_U) // PV_RF
+            SS_DOWN(X_Y) // PV_STAR
+            SS_UP(X_E) // PV_LP
+            SS_UP(X_R) // PV_LH
+            SS_UP(X_F) // PV_LR
+            SS_UP(X_V) // PV_O
+            SS_UP(X_U) // PV_RF
+            SS_UP(X_Y) // PV_STAR
+        );
     }
 }
 
